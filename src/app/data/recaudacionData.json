@@ -1,0 +1,21 @@
+{
+    "año": 2023,
+    "recaudacion_total": 5000000,
+    "recaudacion_por_categoria": [
+        {
+            "categoria": "Vehículos",
+            "recaudacion": 2000000,
+            "porcentaje_total": 40.00
+        },
+        {
+            "categoria": "Inmuebles",
+            "recaudacion": 1500000,
+            "porcentaje_total": 30.00
+        },
+        {
+            "categoria": "Actividades económicas",
+            "recaudacion": 1500000,
+            "porcentaje_total": 30.00
+        }
+    ]
+}

@@ -1,0 +1,117 @@
+<mat-toolbar color="primary">
+    <!-- <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button> -->
+    <span>Dashboard</span>
+    <span class="example-spacer"></span>
+    <button (click)="loadExcelFile()" matTooltip="Cargar excel" mat-icon-button class="example-icon">
+        <mat-icon>upload_file</mat-icon>
+    </button>
+</mat-toolbar>
+<div class="container-fluid">
+    <div class="row">
+        <!-- <div class="col-12">
+            <table mat-table [dataSource]="data" multiTemplateDataRows class="mat-elevation-z8">
+                <ng-container matColumnDef="category">
+                    <th mat-header-cell *matHeaderCellDef> Categoria</th>
+                    <td mat-cell *matCellDef="let element">{{element.categoria}} </td>
+                </ng-container>
+                <ng-container matColumnDef="year">
+                    <th mat-header-cell *matHeaderCellDef> Año</th>
+                    <td mat-cell *matCellDef="let element"> {{element.year}}</td>
+                </ng-container>
+                <ng-container matColumnDef="income">
+                    <th mat-header-cell *matHeaderCellDef> Ingreso</th>
+                    <td mat-cell *matCellDef="let element"> {{element.monto}}</td>
+                </ng-container>
+                <ng-container matColumnDef="budget">
+                    <th mat-header-cell *matHeaderCellDef> Presupuesto</th>
+                    <td mat-cell *matCellDef="let element"> {{element.meta}}</td>
+                </ng-container>
+                <ng-container matColumnDef="percent">
+                    <th mat-header-cell *matHeaderCellDef> Porcentaje</th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100" style="height: 20px">
+                            <div class="progress-bar" [style.width]="element.porcentaje+'%'">{{element.porcentaje}} %
+                            </div>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="expand">
+                    <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button aria-label="expand row"
+                            (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+                            <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+                            <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+        
+                <ng-container matColumnDef="expandedDetail">
+                    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+                        <div class="example-element-detail"
+                            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+
+                            <div class="panel">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <table cdk-table [dataSource]="element.ejecucion_presupuestaria">
+                                            <ng-container cdkColumnDef="category">
+                                                <th cdk-header-cell *cdkHeaderCellDef> Secretaria. </th>
+                                                <td cdk-cell *cdkCellDef="let element"> {{element.categoria}} </td>
+                                            </ng-container>
+                                            <ng-container cdkColumnDef="income">
+                                                <th cdk-header-cell *cdkHeaderCellDef> $ </th>
+                                                <td cdk-cell *cdkCellDef="let element"> {{element.monto}} </td>
+                                            </ng-container>
+                                            <ng-container cdkColumnDef="budget">
+                                                <th cdk-header-cell *cdkHeaderCellDef> Meta </th>
+                                                <td cdk-cell *cdkCellDef="let element"> {{element.meta}} </td>
+                                            </ng-container>
+                                            <tr cdk-header-row *cdkHeaderRowDef="displayedColumns2"></tr>
+                                            <tr cdk-row *cdkRowDef="let row; columns: displayedColumns2;"></tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <app-doughnut-chart
+                                            [data]="element.ejecucion_presupuestaria"></app-doughnut-chart>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+
+
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+                <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;" class="example-element-row"
+                    [class.example-expanded-row]="expandedElement === element"
+                    (click)="expandedElement = expandedElement === element ? null : element">
+                </tr>
+                <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+            </table>
+        </div>-->
+        <table *ngIf="data.length>0" mat-table [dataSource]="data" class="mat-elevation-z8">
+            <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column.key">
+                <th mat-header-cell *matHeaderCellDef> {{column.title}} </th>
+                <td mat-cell *matCellDef="let element">{{element[column.key]}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+        </table>
+    </div>
+
+
+</div>
