@@ -4,10 +4,17 @@
     </button>
     <span>My App</span>
     <span class="example-spacer"></span>
-    <button (click)="add()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
         <mat-icon>add</mat-icon>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-    </button>
+    <mat-menu #menu="matMenu">
+        <button (click)="add()" mat-menu-item>
+            <mat-icon>table_chart</mat-icon>
+            <span>Agregar recaudacion</span>
+        </button>
+        <button (click)="addProjection()" mat-menu-item>
+            <mat-icon>bar_chart</mat-icon>
+            <span>Agregar proyeccion</span>
+        </button>
+    </mat-menu>
 </mat-toolbar>
