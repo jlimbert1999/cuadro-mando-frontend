@@ -17,7 +17,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 @NgModule({
   declarations: [],
   imports: [
@@ -41,7 +45,12 @@ import { MatCardModule } from '@angular/material/card';
     MatMenuModule,
     MatSidenavModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatPaginatorModule,
+    MatButtonToggleModule,
+    ScrollingModule
   ]
 })
 export class MaterialModule { }

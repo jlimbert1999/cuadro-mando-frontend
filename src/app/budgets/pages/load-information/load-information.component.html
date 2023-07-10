@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>CARGAR INFORMACION</h1>
+<mat-dialog-content>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="row">
+                    <mat-form-field>
+                        <mat-label>Fecha de subida</mat-label>
+                        <input [(ngModel)]="dateUpload" matInput [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field>
+                        <mat-label>Cargar como:</mat-label>
+                        <mat-select [(ngModel)]="typeDataForCharge">
+                            <mat-option *ngFor="let type of typesExcelData" [value]="type.value">
+                                {{type.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button (click)="loadExcelFile()" mat-fab extended color="primary">
+                            <mat-icon>upload_file</mat-icon>
+                            Subir EXCEL
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9 p-2">
+                <div class="example-container mat-elevation-z8">
+                    <div class="example-table-container">
+                        <table mat-table [dataSource]="dataSource">
+                            <cdk-virtual-scroll-viewport itemSize="10">
+                                <ng-container [matColumnDef]="column" *cdkVirtualFor="let column of displayedColumns">
+                                    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+                                    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </cdk-virtual-scroll-viewport>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-button (click)="save()" [disabled]="disableSave()">Aceptar</button>
+</mat-dialog-actions>

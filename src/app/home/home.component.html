@@ -2,20 +2,19 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-nav-list>
-      <mat-list-item [routerLink]="'dashboard'">
+      <mat-list-item [routerLink]="'budgets/dashboard'">
         <mat-icon matListItemIcon>analytics</mat-icon>
-        <a matListItemTitle>Estadisticas</a>
+        <span matListItemTitle>Estadisticas</span>
       </mat-list-item>
-      <mat-list-item [routerLink]="'manage'">
+      <mat-list-item [routerLink]="'budgets/records'">
         <mat-icon matListItemIcon>app_registration</mat-icon>
-        <a matListItemTitle>Registros</a>
+        <span matListItemTitle>Registros</span>
       </mat-list-item>
-      <mat-list-item [routerLink]="'information'">
-        <mat-icon matListItemIcon>table</mat-icon>
-        <a matListItemTitle>Lectura</a>
+      <mat-list-item [routerLink]="'budgets/collection/comparison'">
+        <mat-icon matListItemIcon>app_registration</mat-icon>
+        <span matListItemTitle>Comparacion recaudacion</span>
       </mat-list-item>
     </mat-nav-list>
-
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>

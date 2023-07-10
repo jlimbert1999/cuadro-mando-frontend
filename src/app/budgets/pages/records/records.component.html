@@ -1,0 +1,63 @@
+<mat-toolbar>
+    <span>REGISTROS</span>
+    <span class="toolbar-spacer"></span>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button (click)="openDialog()" mat-menu-item>
+            <mat-icon>upload</mat-icon>
+            <span>Cargar informacion</span>
+        </button>
+        <button (click)="addEarning()" mat-menu-item>
+            <mat-icon>table_rows</mat-icon>
+            <span>Registrar recaudacion</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>
+
+<mat-tab-group>
+    <mat-tab label="Recaudacion">
+        <div class="container-fluid p-2">
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSourceEarning">
+                    <ng-container matColumnDef="user">
+                        <th mat-header-cell *matHeaderCellDef> Funcionario </th>
+                        <td mat-cell *matCellDef="let element"> {{element.user}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="date">
+                        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                        <td mat-cell *matCellDef="let element"> {{element.date|date:'short'}} </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+                </mat-paginator>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Ejecucion">
+        <div class="container-fluid p-2">
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSourceExecution">
+                    <ng-container matColumnDef="user">
+                        <th mat-header-cell *matHeaderCellDef> Funcionario </th>
+                        <td mat-cell *matCellDef="let element"> {{element.user}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="date">
+                        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                        <td mat-cell *matCellDef="let element"> {{element.date|date:'short'}} </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+                </mat-paginator>
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>

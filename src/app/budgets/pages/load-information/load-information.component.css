@@ -1,0 +1,11 @@
+.example-container {
+    position: relative;
+    border: 1px solid black;
+}
+
+.example-table-container {
+    position: relative;
+    min-height: 400px;
+    max-height: 400px;
+    overflow: auto;
+}

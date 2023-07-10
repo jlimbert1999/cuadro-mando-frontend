@@ -1,25 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DoughnutChartComponent } from './doughnut-chart/doughnut-chart.component';
 import { NgChartsModule } from 'ng2-charts';
-import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { DoughnutComponent } from './charts/doughnut/doughnut.component';
+import { BarComponent } from './charts/bar/bar.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { GaugeComponent } from './charts/gauge/gauge.component';
+import { LineComponent } from './charts/line/line.component';
 
 
 
 
 @NgModule({
   declarations: [
-    DoughnutChartComponent,
-    BarChartComponent
+    DoughnutComponent,
+    BarComponent,
+    GaugeComponent,
+    LineComponent,
   ],
   imports: [
     CommonModule,
-    NgChartsModule
-    
+    NgChartsModule,
+    NgApexchartsModule
   ],
   exports: [
-    DoughnutChartComponent,
-    BarChartComponent
+    DoughnutComponent,
+    BarComponent,
+    GaugeComponent,
+    LineComponent
   ]
 })
 export class SharedModule { }
