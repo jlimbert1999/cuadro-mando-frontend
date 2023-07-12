@@ -20,7 +20,7 @@ export class ExecutionService {
     return this.http.get<Execution[]>(`${baseUrl}/execution`)
   }
   getByDate(date: Date) {
-    return this.http.get<GroupedExecution[]>(`${baseUrl}/execution/${date.getTime()}`).pipe(
+    return this.http.get<GroupedExecution>(`${baseUrl}/execution/${date.getTime()}`).pipe(
       map(resp => {
         return resp
       }))

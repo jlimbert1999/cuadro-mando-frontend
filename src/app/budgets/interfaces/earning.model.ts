@@ -20,6 +20,11 @@ export interface ExcelDataEarning {
 }
 
 export interface GroupedEarning {
+    lastRecord: {
+        _id: string,
+        user: string,
+        date: string
+    }
     earning: {
         _id?: null;
         ACTIVIDADES: number;

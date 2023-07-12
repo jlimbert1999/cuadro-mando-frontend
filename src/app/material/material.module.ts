@@ -22,6 +22,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 @NgModule({
   declarations: [],
   imports: [
@@ -50,7 +51,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatTabsModule,
     MatPaginatorModule,
     MatButtonToggleModule,
-    ScrollingModule
+    ScrollingModule,
+    MatBottomSheetModule
   ]
 })
 export class MaterialModule { }

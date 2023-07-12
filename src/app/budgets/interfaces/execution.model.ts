@@ -6,9 +6,17 @@ export interface Execution extends ExecutionDto {
 }
 
 export interface GroupedExecution {
-    _id: string;
-    presupuesto_vigente: number;
-    presupuesto_ejecutado: number;
+    lastRecord: {
+        _id: string
+        user: string
+        date: string
+    }
+    execution: {
+        _id: string;
+        presupuesto_vigente: number;
+        presupuesto_ejecutado: number;
+    }[]
+
 }
 
 

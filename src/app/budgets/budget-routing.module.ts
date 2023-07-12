@@ -5,12 +5,15 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoadInformationComponent } from './pages/load-information/load-information.component';
 import { RecordsComponent } from './pages/records/records.component';
 import { CollectionComparisonComponent } from './pages/collection-comparison/collection-comparison.component';
+import { ComparationsComponent } from './pages/comparations/comparations.component';
 
 
 const routes: Routes = [
+  // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'records', component: RecordsComponent },
-  { path: 'collection/comparison', component: CollectionComparisonComponent },
+  { path: 'comparations', component: ComparationsComponent },
+  { path: 'history', component: CollectionComparisonComponent },
 ];
 
 @NgModule({

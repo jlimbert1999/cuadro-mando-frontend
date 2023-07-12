@@ -1,7 +1,8 @@
 import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
-import { ChartConfiguration } from 'chart.js';
+import { ChartConfiguration, Chart } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+Chart.register(ChartDataLabels);
 @Component({
   selector: 'app-line',
   templateUrl: './line.component.html',
@@ -10,24 +11,8 @@ import { BaseChartDirective } from 'ng2-charts';
 export class LineComponent implements OnChanges {
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
   @Input() public lineChartData: ChartConfiguration['data'] = {
-    datasets: [
-      {
-        data: [65, 59, 80, 81, 56, 55, 40],
-        label: 'Series A',
-        fill: false,
-      },
-      {
-        data: [28, 48, 40, 19, 86, 27, 90],
-        label: 'Series B',
-        fill: false,
-      },
-      {
-        data: [180, 480],
-        label: 'Series C',
-        fill: false,
-      }
-    ],
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+    datasets: [],
+    labels: []
   };
 
   public lineChartOptions: ChartConfiguration['options'] = {
@@ -37,7 +22,46 @@ export class LineComponent implements OnChanges {
       }
     },
     plugins: {
+      datalabels: {
+        borderRadius: 4,
+        font: {
+          weight: 'bold'
+        },
+        formatter: function (value: number, context) {
+          return `${value.toLocaleString()} Bs.`;
+        },
+        padding: 6
+      }
+    },
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        top: 32,
+        right: 16,
+        bottom: 16,
+        left: 8
+      }
+    },
+    scales: {
+      y: {
+        stacked: true
+      }
     }
+  };
+
+  gestion1 = 'Gestión 2021';
+  gestion2 = 'Gestión 2022';
+
+  montosGestion1 = {
+    total: 5000,
+    submonto1: 2000,
+    submonto2: 3000
+  };
+
+  montosGestion2 = {
+    total: 7000,
+    submonto1: 2500,
+    submonto2: 4500
   };
   constructor() {
 

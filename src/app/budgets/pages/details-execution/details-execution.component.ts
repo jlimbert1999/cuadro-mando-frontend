@@ -15,7 +15,7 @@ export class DetailsExecutionComponent {
     labels: [],
     datasets: []
   }
-  constructor(@Inject(MAT_DIALOG_DATA) public data: GroupedExecution[]) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: GroupedExecution) {
 
 
   }
@@ -24,7 +24,7 @@ export class DetailsExecutionComponent {
     let ejecutado: number[] = []
     let vigente: number[] = []
 
-    this.data.forEach(element => {
+    this.data.execution.forEach(element => {
       labels.push(element._id)
       ejecutado.push(element.presupuesto_ejecutado)
       vigente.push(element.presupuesto_vigente)

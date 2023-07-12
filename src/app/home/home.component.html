@@ -1,22 +1,35 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-nav-list>
-      <mat-list-item [routerLink]="'budgets/dashboard'">
-        <mat-icon matListItemIcon>analytics</mat-icon>
-        <span matListItemTitle>Estadisticas</span>
-      </mat-list-item>
-      <mat-list-item [routerLink]="'budgets/records'">
-        <mat-icon matListItemIcon>app_registration</mat-icon>
-        <span matListItemTitle>Registros</span>
-      </mat-list-item>
-      <mat-list-item [routerLink]="'budgets/collection/comparison'">
-        <mat-icon matListItemIcon>app_registration</mat-icon>
-        <span matListItemTitle>Comparacion recaudacion</span>
-      </mat-list-item>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar style="background-color: black; color: white;" class="example-toolbar">
+    <button (click)="snav.toggle()" mat-icon-button class="example-icon"
+      aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>GAMS</span>
+  </mat-toolbar>
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list>
+        <mat-list-item [routerLink]="'budgets/dashboard'">
+          <mat-icon matListItemIcon>analytics</mat-icon>
+          <span matListItemTitle>Estadisticas</span>
+        </mat-list-item>
+        <mat-list-item [routerLink]="'budgets/history'">
+          <mat-icon matListItemIcon>checklist</mat-icon>
+          <span matListItemTitle>Historicos</span>
+        </mat-list-item>
+        <mat-list-item [routerLink]="'budgets/comparations'">
+          <mat-icon matListItemIcon>low_priority</mat-icon>
+          <span matListItemTitle>Comparaciones</span>
+        </mat-list-item>
+        <mat-list-item [routerLink]="'budgets/records'">
+          <mat-icon matListItemIcon>list_alt</mat-icon>
+          <span matListItemTitle>Registros</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

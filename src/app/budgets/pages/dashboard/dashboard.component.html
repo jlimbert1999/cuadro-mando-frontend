@@ -1,15 +1,41 @@
 <p>
   <mat-toolbar>
-    <span>Dashboard</span>
+    <span>Estadística</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>question_mark</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon style="color: #D90429;">opacity</mat-icon>
+        <span>Muy malo -30</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon style="color: #F77F00;">opacity</mat-icon>
+        <span>Malo -60</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon style="color: #38B000;">opacity</mat-icon>
+        <span>Bueno -90 </span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon style="color: #4361EE;">opacity</mat-icon>
+        <span>Excelente 100%</span>
+      </button>
+    </mat-menu>
+    <button (click)="openBottomSheet()" mat-icon-button class="example-icon"
+      aria-label="Example icon-button with share icon">
+      <mat-icon>settings</mat-icon>
+    </button>
   </mat-toolbar>
 </p>
 <form [formGroup]="FormDates">
   <div class="container text-center">
-    <h1 lass="fw-medium">GOBIERNO AUTONOMO MUNICIPAL DE SACABA</h1>
+    <h1 class="mt-6">GOBIERNO AUTONOMO MUNICIPAL DE SACABA</h1>
     <div class="row">
-      <div class="col-sm-6">
-        <div class="card text-center shadow mb-5 bg-body-tertiary rounded">
-          <h2 class="card-header">RECAUDACION AL: {{FormDates.get('earningDate')?.value|date:'medium'}}</h2>
+      <div class="col-sm-6 mb-3">
+        <div class="card shadow">
+          <h3 class="card-header">RECAUDACION AL: {{earning?.lastRecord?.date|date:'longDate'}}</h3>
           <div class="card-body">
             <app-gauge [chartData]="chartDataEarning"></app-gauge>
           </div>
@@ -22,78 +48,27 @@
             </li>
           </ul>
           <div class="card-footer">
-            <div class="row">
-              <div class="col-sm-6">
-                <mat-form-field class="example-form-field">
-                  <mat-label>Choose a date</mat-label>
-                  <input matInput formControlName="earningDate" [matDatepicker]="datepicker">
-                  <mat-hint>MM/DD/YYYY</mat-hint>
-                  <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
-                  <mat-datepicker #datepicker>
-                    <mat-datepicker-actions>
-                      <button mat-button matDatepickerCancel>Cancelar</button>
-                      <button mat-raised-button color="primary" (click)="getEarning()"
-                        matDatepickerApply>Aplicar</button>
-                    </mat-datepicker-actions>
-                  </mat-datepicker>
-                </mat-form-field>
-              </div>
-              <div class="col-sm-2">
-                <button mat-raised-button (click)="viewDetailsEarning()" color="primary">Detalles</button>
-              </div>
-              <div class="col-sm-2">
-                <button (click)="resetEarning()" mat-mini-fab matTooltip="Primary" color="primary"
-                  aria-label="Example mini fab with a heart icon">
-                  <mat-icon>restart_alt</mat-icon>
-                </button>
-              </div>
-            </div>
+            <button mat-raised-button color="primary" (click)="viewDetailsEarning()">VER MAS</button>
           </div>
 
         </div>
       </div>
       <div class="col-sm-6">
-        <div class="card text-center shadow mb-5 bg-body-tertiary rounded">
-          <h2 class="card-header">EJECUCION AL {{FormDates.get('executionDate')?.value|date:'medium'}}</h2>
+        <div class="card shadow">
+          <h3 class="card-header">EJECUCION AL {{execution?.lastRecord?.date|date:'longDate'}}</h3>
           <div class="card-body">
             <app-gauge [chartData]="chartDataExecution"></app-gauge>
           </div>
-
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              RECAUDADO: {{totalExecution.current|currency:"Bs."}}
+              EJECUTADO: {{totalExecution.current|currency:"Bs."}}
             </li>
             <li class="list-group-item">
-              PROYECTADO {{totalExecution.projection|currency:"Bs."}}
+              TOTAL: {{totalExecution.projection|currency:"Bs."}}
             </li>
           </ul>
           <div class="card-footer">
-            <div class="row">
-              <div class="col-sm-6">
-                <mat-form-field class="example-form-field">
-                  <mat-label>Choose a date</mat-label>
-                  <input matInput formControlName="executionDate" [matDatepicker]="datepicker1">
-                  <mat-hint>MM/DD/YYYY</mat-hint>
-                  <mat-datepicker-toggle matIconSuffix [for]="datepicker1"></mat-datepicker-toggle>
-                  <mat-datepicker #datepicker1>
-                    <mat-datepicker-actions>
-                      <button mat-button matDatepickerCancel>Cancelar</button>
-                      <button mat-raised-button color="primary" (click)="getExecution()"
-                        matDatepickerApply>Aplicar</button>
-                    </mat-datepicker-actions>
-                  </mat-datepicker>
-                </mat-form-field>
-              </div>
-              <div class="col-sm-2">
-                <button mat-raised-button (click)="viewDetailsExecution()" color="primary">Detalles</button>
-              </div>
-              <div class="col-sm-2">
-                <button (click)="resetExecution()" mat-mini-fab matTooltip="Primary" color="primary"
-                  aria-label="Example mini fab with a heart icon">
-                  <mat-icon>restart_alt</mat-icon>
-                </button>
-              </div>
-            </div>
+            <button mat-raised-button color="primary" (click)="viewDetailsExecution()">VER MAS</button>
           </div>
         </div>
       </div>

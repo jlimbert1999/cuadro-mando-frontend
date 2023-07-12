@@ -27,7 +27,7 @@ export type ChartOptions = {
   templateUrl: './gauge.component.html',
   styleUrls: ['./gauge.component.css']
 })
-export class GaugeComponent implements OnChanges, AfterViewInit {
+export class GaugeComponent implements OnChanges {
   @ViewChild("chart") chart: ChartComponent | undefined;
   @Input() chartData: { data: number, label: string } = { data: 1, label: '' }
   public chartOptions: Partial<ChartOptions>;
@@ -35,28 +35,19 @@ export class GaugeComponent implements OnChanges, AfterViewInit {
   constructor() {
     this.chartOptions = {
       series: [],
+      labels: [],
       chart: {
-        height: 600,
+        // height: 600,
         type: "radialBar",
-        toolbar: {
-          show: true
-        }
       },
-      // plotOptions: {
-      //   radialBar: {
-      //     hollow: {
-      //       size: "60%"
-      //     }
-      //   }
-      // },
       plotOptions: {
         radialBar: {
           dataLabels: {
             name: {
-              fontSize: "20px"
+              fontSize: "15px"
             },
             value: {
-              fontSize: "25px"
+              fontSize: "20px"
             }
           }
         }
@@ -73,22 +64,9 @@ export class GaugeComponent implements OnChanges, AfterViewInit {
           else return '#4361EE'
         }]
       },
-      dataLabels: {
-        style: {
-          fontSize: '20px',
-        },
-        background: {
-          enabled: true,
-          borderWidth: 2
-        }
-      },
-      labels: []
     };
   }
-  ngAfterViewInit(): void {
 
-
-  }
   ngOnChanges(changes: SimpleChanges): void {
     this.chartOptions.series = [parseFloat(this.chartData.data.toFixed(2))]
     this.chartOptions.labels = [this.chartData.label]

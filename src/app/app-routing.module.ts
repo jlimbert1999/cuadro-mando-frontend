@@ -8,9 +8,9 @@ const routes: Routes = [
       {
         path: 'budgets',
         loadChildren: () => import('./budgets/budget.module').then(m => m.BudgetModule)
-      },
+      }
     ]
-  }
+  },
 ];
 
 @NgModule({

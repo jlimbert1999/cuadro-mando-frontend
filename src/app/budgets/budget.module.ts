@@ -13,6 +13,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { DetailsExecutionComponent } from './pages/details-execution/details-execution.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { CollectionComparisonComponent } from './pages/collection-comparison/collection-comparison.component';
+import { ConfigDateComponent } from './bottomSheets/config-date/config-date.component';
+import { ComparationsComponent } from './pages/comparations/comparations.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { CollectionComparisonComponent } from './pages/collection-comparison/col
     DetailsEarningComponent,
     RegisterComponent,
     DetailsExecutionComponent,
-    CollectionComparisonComponent
+    CollectionComparisonComponent,
+    ConfigDateComponent,
+    ComparationsComponent
   ],
   imports: [
     CommonModule,

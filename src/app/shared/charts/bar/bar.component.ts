@@ -1,7 +1,8 @@
 import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
-import { ChartConfiguration, ChartData } from 'chart.js';
+import { ChartConfiguration, ChartData, Chart } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+Chart.register(ChartDataLabels);
 @Component({
   selector: 'app-bar',
   templateUrl: './bar.component.html',
@@ -12,29 +13,27 @@ export class BarComponent implements OnChanges {
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     indexAxis: 'y',
-    elements: {
-      line: {
-        tension: 0.4
-      }
-    },
-
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: true,
       },
       datalabels: {
+        font: {
+          weight: 'bold'
+        },
         anchor: 'end',
-        align: 'end'
-      }
-    },
+        align: 'end',
+        formatter: function (value: number, context) {
+          return `${value.toLocaleString()} Bs.`;
+        },
 
+      },
+
+    }
   };
-  public barChartLabels: string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels: string[] = [];
   @Input() public barChartData: ChartData<'bar'> = {
-    labels: [],
-    datasets: []
-  };
-  public doughnutChartData: ChartData<'doughnut'> = {
     labels: [],
     datasets: []
   };
