@@ -133,7 +133,7 @@ export class LoadInformationComponent {
       projection.months.push(element)
     })
     this.earningService.addProjection(projection).subscribe(projection => {
-      console.log(projection);
+      this.dialogRef.close()
     })
   }
 

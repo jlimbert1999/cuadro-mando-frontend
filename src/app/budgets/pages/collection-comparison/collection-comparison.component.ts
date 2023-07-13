@@ -20,7 +20,7 @@ export class CollectionComparisonComponent {
   dataSource: any[] = [];
   chartData: lineChartData = {
     datasets: [],
-    labels: ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE']
+    labels: ['', 'ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE']
   }
 
   constructor(private earningService: EarningService) {
@@ -41,28 +41,39 @@ export class CollectionComparisonComponent {
     })
     if (formValues) {
       const duplicate = this.chartData.datasets.some(el => el.label === formValues)
-      if (!duplicate) {
-        this.earningService.getComparisonData(new Date(parseInt(formValues), 0, 1)).subscribe(data => {
-          const values: number[] = []
-          for (let index = 0; index < 12; index++) {
-            const chartElement = data.find(el => el._id == index + 1)
-            values.push(chartElement ? (chartElement.ACTIVIDADES + chartElement.TASAS + chartElement.INMUEBLES + chartElement.VEHICULOS) : 0)
-          }
-          this.chartData.datasets.push({
-            label: formValues,
-            fill: false,
-            data: values
+      if (duplicate) return
+      this.earningService.getComparisonData(new Date(parseInt(formValues), 0, 1)).subscribe(data => {
+        if (data.length === 0 || !data) {
+          Swal.fire({
+            icon: 'info',
+            title: `No se encontraron registros para la gestion ${formValues}`
           })
-          this.chartData = { ...this.chartData }
-          const sum = data.map(el => el.ACTIVIDADES + el.INMUEBLES + el.TASAS + el.VEHICULOS).reduce((partialSum, a) => partialSum + a, 0);
-          this.dataSource = [{ year: formValues, total: sum }, ...this.dataSource];
+          return
+        }
+        const values: any[] = []
+        let total = 0
+        for (let index = 1; index <= 12; index++) {
+          const chartElement = data.find(el => el._id == index)
+          let total = chartElement ? (chartElement.ACTIVIDADES + chartElement.TASAS + chartElement.INMUEBLES + chartElement.VEHICULOS) : null
+          values.push(total)
+        }
+        this.chartData.datasets.push({
+          label: formValues,
+          fill: false,
+          data: [0, ...values]
         })
-      }
+        this.chartData = { ...this.chartData }
+        const sum = data.map(el => el.ACTIVIDADES + el.INMUEBLES + el.TASAS + el.VEHICULOS).reduce((partialSum, a) => partialSum + a, 0);
+        this.dataSource = [{ year: formValues, total: sum }, ...this.dataSource];
+      })
     }
   }
 
-  getComparisonData(date: any) {
-    console.log(date);
-
+  remove(element: any) {
+    this.dataSource = this.dataSource.filter(el => el.year != element.year)
+    this.chartData.datasets = this.chartData.datasets.filter(el => el.label != element.year)
+    this.chartData = { ...this.chartData }
   }
+
+
 }

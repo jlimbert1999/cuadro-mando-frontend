@@ -1,0 +1,61 @@
+<div class="container-fluid p-4">
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="col-sm-12  shadow-lg p-3 mb-4 bg-body-tertiary rounded">
+                <app-line [lineChartData]="charData"></app-line>
+            </div>
+        </div>
+        <div class="col-sm-2 shadow-lg p-3 mb-5 bg-white rounde">
+            <div class="row">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Seleccione una fecha</mat-label>
+                    <input [(ngModel)]="date" matInput [matDatepicker]="datepicker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #datepicker>
+                        <mat-datepicker-actions>
+                            <button mat-button matDatepickerCancel>Cancelar</button>
+                            <button mat-raised-button color="primary" matDatepickerApply>Aplicar</button>
+                        </mat-datepicker-actions>
+                    </mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <button (click)="getCompartion()" mat-raised-button color="primary">Buscar</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Proyectado</th>
+                        <th scope="col">Recaudado</th>
+                        <th scope="col">Diferencia</th>
+                        <th scope="col">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of dataSource; let i=index">
+                        <th scope="row"> {{item.date | date: 'MMMM'|uppercase}}</th>
+                        <td>{{item.projection|currency:'Bs.'}}</td>
+                        <td>{{item.earning|currency:'Bs.'}}</td>
+                        <td>{{item.dif|currency:'Bs.'}}</td>
+                        <td>
+                            <span *ngIf="item.indicator" class="badge bg-success">EXCEDENTE</span>
+                            <span *ngIf="!item.indicator" class="badge bg-danger">DEFICIT</span>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

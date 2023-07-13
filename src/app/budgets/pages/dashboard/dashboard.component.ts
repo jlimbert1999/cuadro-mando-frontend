@@ -102,13 +102,13 @@ export class DashboardComponent implements AfterViewInit {
 
   viewDetailsExecution() {
     this.dialog.open(DetailsExecutionComponent, {
-      width: '1200px',
+      width: '1600px',
       data: this.execution
     })
   }
   viewDetailsEarning() {
     this.dialog.open(DetailsEarningComponent, {
-      width: '900px',
+      width: '1600px',
       data: this.earning
     })
 

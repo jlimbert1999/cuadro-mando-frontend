@@ -36,5 +36,11 @@ export class EarningService {
         return resp
       }))
   }
+  getComparisonProjection(date: Date) {
+    return this.http.get<{ earning: ComparisonEarningData[], projection: Projection }>(`${baseUrl}/earnings/comparison/projection/${date.getTime()}`).pipe(
+      map(resp => {
+        return resp
+      }))
+  }
 
 }

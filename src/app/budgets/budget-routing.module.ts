@@ -6,14 +6,15 @@ import { LoadInformationComponent } from './pages/load-information/load-informat
 import { RecordsComponent } from './pages/records/records.component';
 import { CollectionComparisonComponent } from './pages/collection-comparison/collection-comparison.component';
 import { ComparationsComponent } from './pages/comparations/comparations.component';
+import { ProjectionComparisonComponent } from './projection-comparison/projection-comparison.component';
 
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'records', component: RecordsComponent },
   { path: 'comparations', component: ComparationsComponent },
   { path: 'history', component: CollectionComparisonComponent },
+  { path: 'projections', component: ProjectionComparisonComponent },
 ];
 
 @NgModule({

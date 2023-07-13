@@ -15,6 +15,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { CollectionComparisonComponent } from './pages/collection-comparison/collection-comparison.component';
 import { ConfigDateComponent } from './bottomSheets/config-date/config-date.component';
 import { ComparationsComponent } from './pages/comparations/comparations.component';
+import { ProjectionComparisonComponent } from './projection-comparison/projection-comparison.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ComparationsComponent } from './pages/comparations/comparations.compone
     DetailsExecutionComponent,
     CollectionComparisonComponent,
     ConfigDateComponent,
-    ComparationsComponent
+    ComparationsComponent,
+    ProjectionComparisonComponent
   ],
   imports: [
     CommonModule,

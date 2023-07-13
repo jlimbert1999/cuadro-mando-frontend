@@ -1,5 +1,5 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
-  <mat-toolbar style="background-color: black; color: white;" class="example-toolbar">
+  <mat-toolbar style="background-color: #33415C; color: white;" class="example-toolbar">
     <button (click)="snav.toggle()" mat-icon-button class="example-icon"
       aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
@@ -8,7 +8,7 @@
   </mat-toolbar>
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56">
+      fixedTopGap="56" [opened]="true">
       <mat-nav-list>
         <mat-list-item [routerLink]="'budgets/dashboard'">
           <mat-icon matListItemIcon>analytics</mat-icon>
@@ -21,6 +21,10 @@
         <mat-list-item [routerLink]="'budgets/comparations'">
           <mat-icon matListItemIcon>low_priority</mat-icon>
           <span matListItemTitle>Comparaciones</span>
+        </mat-list-item>
+        <mat-list-item [routerLink]="'budgets/projections'">
+          <mat-icon matListItemIcon>compare_arrows</mat-icon>
+          <span matListItemTitle>Proyecciones</span>
         </mat-list-item>
         <mat-list-item [routerLink]="'budgets/records'">
           <mat-icon matListItemIcon>list_alt</mat-icon>
