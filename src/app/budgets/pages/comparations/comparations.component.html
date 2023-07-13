@@ -68,6 +68,7 @@
                 <th scope="col">{{date1|date:'longDate'}}</th>
                 <th scope="col">{{date2|date:'longDate'}}</th>
                 <th scope="col">Diferencia</th>
+                <th scope="col">Situacion</th>
               </tr>
             </thead>
             <tbody>
@@ -76,24 +77,56 @@
                 <td>{{data[0].ACTIVIDADES|currency:'Bs.'}}</td>
                 <td>{{data[1].ACTIVIDADES|currency:'Bs.'}}</td>
                 <td>{{compare(data[0].ACTIVIDADES, data[1].ACTIVIDADES)|currency:'Bs'}}</td>
+                <td>
+                  <div *ngIf="compare(data[0].ACTIVIDADES, data[1].ACTIVIDADES).includes('-'); else loggedOut">
+                    <span class="badge bg-success">DEFICIT</span>
+                  </div>
+                  <ng-template #loggedOut>
+                    <span class="badge bg-success">EXCEDENTE</span>
+                  </ng-template>
+                </td>
               </tr>
               <tr>
                 <th scope="row">INMUEBLES</th>
                 <td>{{data[0].INMUEBLES|currency:'Bs.'}}</td>
                 <td>{{data[1].INMUEBLES|currency:'Bs.'}}</td>
                 <td>{{compare(data[0].INMUEBLES, data[1].INMUEBLES)|currency:'Bs'}}</td>
+                <td>
+                  <div *ngIf="compare(data[0].INMUEBLES, data[1].INMUEBLES).includes('-'); else loggedOut">
+                    <span class="badge bg-success">DEFICIT</span>
+                  </div>
+                  <ng-template #loggedOut>
+                    <span class="badge bg-success">EXCEDENTE</span>
+                  </ng-template>
+                </td>
               </tr>
               <tr>
                 <th scope="row">TASAS</th>
                 <td>{{data[0].TASAS|currency:'Bs.'}}</td>
                 <td>{{data[1].TASAS|currency:'Bs.'}}</td>
                 <td>{{compare(data[0].TASAS, data[1].TASAS)|currency:'Bs'}}</td>
+                <td>
+                  <div *ngIf="compare(data[0].TASAS, data[1].TASAS).includes('-'); else loggedOut">
+                    <span class="badge bg-danger">DEFICIT</span>
+                  </div>
+                  <ng-template #loggedOut>
+                    <span class="badge bg-success">EXCEDENTE</span>
+                  </ng-template>
+                </td>
               </tr>
               <tr>
                 <th scope="row">VEHICULOS</th>
                 <td>{{data[0].VEHICULOS|currency:'Bs.'}}</td>
                 <td>{{data[1].VEHICULOS|currency:'Bs.'}}</td>
                 <td>{{compare(data[0].VEHICULOS, data[1].VEHICULOS)|currency:'Bs'}}</td>
+                <td>
+                  <div *ngIf="compare(data[0].VEHICULOS, data[1].VEHICULOS).includes('-'); else loggedOut">
+                    <span class="badge bg-danger">DEFICIT</span>
+                  </div>
+                  <ng-template #loggedOut>
+                    <span class="badge bg-success">EXCEDENTE</span>
+                  </ng-template>
+                </td>
               </tr>
             </tbody>
           </table>

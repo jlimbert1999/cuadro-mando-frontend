@@ -83,7 +83,6 @@ export class ComparationsComponent {
   }
 
   compare(data1: number, data2: number) {
-    console.log(data1);
     return (data1 - data2).toFixed(2)
   }
 

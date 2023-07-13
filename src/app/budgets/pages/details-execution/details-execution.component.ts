@@ -38,8 +38,7 @@ export class DetailsExecutionComponent {
       ]
 
     }
-    console.log(this.data);
-    console.log(Object.keys(this.data));
+  
 
   }
 

@@ -25,7 +25,7 @@ export class DoughnutComponent implements OnChanges {
         },
         backgroundColor: 'white',
         formatter: (value, ctx) => {
-          console.log(ctx.chart.data.datasets[0].data);
+         
           let sum = 0;
           let dataArr = ctx.chart.data.datasets[0].data;
           dataArr.map((data: any) => {

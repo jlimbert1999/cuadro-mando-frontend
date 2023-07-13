@@ -59,6 +59,7 @@ export class DashboardComponent implements AfterViewInit {
     ).subscribe(data => {
       this.earning = data[0]
       this.execution = data[1];
+      console.log(data[0]);
       this.createDataChartEarning(this.earning)
       this.createDataChartExecution(this.execution)
     })
