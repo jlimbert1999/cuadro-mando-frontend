@@ -9,7 +9,6 @@ interface lineChartData {
   }[];
   labels: string[]
 }
-
 @Component({
   selector: 'app-projection-comparison',
   templateUrl: './projection-comparison.component.html',

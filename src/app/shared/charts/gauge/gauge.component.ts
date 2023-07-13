@@ -44,21 +44,21 @@ export class GaugeComponent implements OnChanges {
         radialBar: {
           dataLabels: {
             name: {
-              fontSize: "15px"
+              fontSize: "20px"
             },
             value: {
-              fontSize: "20px"
+              fontSize: "35px",
             }
           }
         }
       },
       fill: {
         colors: [function ({ value, seriesIndex, dataPointIndex }: any) {
-          if (value < 30) {
+          if (value < 25) {
             return '#D90429'
           }
-          else if (value >= 30 && value < 60)
-            return '#F77F00'
+          else if (value >= 25 && value < 60)
+            return '#FFD60A'
           else if (value >= 60 && value < 90)
             return '#38B000'
           else return '#4361EE'

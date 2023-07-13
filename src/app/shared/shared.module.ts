@@ -6,6 +6,7 @@ import { BarComponent } from './charts/bar/bar.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { GaugeComponent } from './charts/gauge/gauge.component';
 import { LineComponent } from './charts/line/line.component';
+import { PieComponent } from './charts/pie/pie.component';
 
 
 
@@ -16,6 +17,7 @@ import { LineComponent } from './charts/line/line.component';
     BarComponent,
     GaugeComponent,
     LineComponent,
+    PieComponent,
   ],
   imports: [
     CommonModule,

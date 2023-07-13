@@ -8,19 +8,15 @@
     <mat-menu #menu="matMenu">
       <button mat-menu-item>
         <mat-icon style="color: #D90429;">opacity</mat-icon>
-        <span>Muy malo -30</span>
+        <span>Malo</span>
       </button>
       <button mat-menu-item>
         <mat-icon style="color: #F77F00;">opacity</mat-icon>
-        <span>Malo -60</span>
+        <span>Regural</span>
       </button>
       <button mat-menu-item>
         <mat-icon style="color: #38B000;">opacity</mat-icon>
-        <span>Bueno -90 </span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon style="color: #4361EE;">opacity</mat-icon>
-        <span>Excelente 100%</span>
+        <span>Bueno </span>
       </button>
     </mat-menu>
     <button (click)="openBottomSheet()" mat-icon-button class="example-icon"
@@ -41,11 +37,28 @@
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
+              <ul class="list-group list-group-horizontal">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Bueno
+                  <span style="background-color: #38B000;" class="color-box"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Regular
+                  <span style="background-color: #FFD60A;" class="color-box"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Malo
+                  <span style="background-color: #D90429;" class="color-box"></span>
+                </li>
+              </ul>
+            </li>
+            <li class="list-group-item">
               RECAUDADO: {{totalEarning.current|currency:"Bs."}}
             </li>
             <li class="list-group-item">
               PROYECTADO {{totalEarning.projection|currency:"Bs."}}
             </li>
+
           </ul>
           <div class="card-footer">
             <button mat-raised-button color="primary" (click)="viewDetailsEarning()">VER MAS</button>
@@ -60,6 +73,22 @@
             <app-gauge [chartData]="chartDataExecution"></app-gauge>
           </div>
           <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-group list-group-horizontal">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Bueno
+                  <span style="background-color: #38B000;" class="color-box"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Regular
+                  <span style="background-color: #FFD60A;" class="color-box"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Malo
+                  <span style="background-color: #D90429;" class="color-box"></span>
+                </li>
+              </ul>
+            </li>
             <li class="list-group-item">
               EJECUTADO: {{totalExecution.current|currency:"Bs."}}
             </li>

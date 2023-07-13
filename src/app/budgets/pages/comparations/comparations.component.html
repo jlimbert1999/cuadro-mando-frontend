@@ -1,9 +1,9 @@
 <mat-toolbar>
   <span>Comparacion</span>
 </mat-toolbar>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4 mb-2">
+<div class="container-fluid">
+  <div class="row mb-2">
+    <div class="col-sm-4">
       <mat-card class="example-card">
         <mat-card-header>
           <mat-card-title>COMPARACION POR FECHAS</mat-card-title>
@@ -40,54 +40,66 @@
           <mat-divider></mat-divider>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button color="warn">RESTABLECER</button>
           <button mat-button color="primary" (click)="getData()">COMPARAR</button>
         </mat-card-actions>
       </mat-card>
     </div>
-
     <div class="col-sm-8">
+      <div class="row">
+        <div class="col-sm-6">
+          <app-gauge [chartData]="chartData1"></app-gauge>
+        </div>
+        <div class="col-sm-6">
+          <app-gauge [chartData]="chartData2"></app-gauge>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
       <div class="card">
         <div class="card-body">
           <h2 class="card-title">RESULTADOS COMPARACION</h2>
           <table class="table table-bordered" *ngIf="data[0] && data[1]">
-            <thead>
+            <thead class="table-dark">
               <tr>
+                <th scope="col">RUBROS</th>
                 <th scope="col">{{date1|date:'longDate'}}</th>
-                <th scope="col">{{date1|date:'longDate'}}</th>
+                <th scope="col">{{date2|date:'longDate'}}</th>
                 <th scope="col">Diferencia</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">ACTIVIDADES</th>
-                <td>{{data[0].ACTIVIDADES}}</td>
-                <td>{{data[1].ACTIVIDADES}}</td>
-                <td></td>
+                <td>{{data[0].ACTIVIDADES|currency:'Bs.'}}</td>
+                <td>{{data[1].ACTIVIDADES|currency:'Bs.'}}</td>
+                <td>{{compare(data[0].ACTIVIDADES, data[1].ACTIVIDADES)|currency:'Bs'}}</td>
               </tr>
               <tr>
                 <th scope="row">INMUEBLES</th>
-                <td>{{data[0].INMUEBLES}}</td>
-                <td>{{data[1].INMUEBLES}}</td>
-                <td>@mdo</td>
+                <td>{{data[0].INMUEBLES|currency:'Bs.'}}</td>
+                <td>{{data[1].INMUEBLES|currency:'Bs.'}}</td>
+                <td>{{compare(data[0].INMUEBLES, data[1].INMUEBLES)|currency:'Bs'}}</td>
               </tr>
               <tr>
                 <th scope="row">TASAS</th>
-                <td>{{data[0].TASAS}}</td>
-                <td>{{data[1].TASAS}}</td>
-                <td>@mdo</td>
+                <td>{{data[0].TASAS|currency:'Bs.'}}</td>
+                <td>{{data[1].TASAS|currency:'Bs.'}}</td>
+                <td>{{compare(data[0].TASAS, data[1].TASAS)|currency:'Bs'}}</td>
               </tr>
               <tr>
                 <th scope="row">VEHICULOS</th>
-                <td>{{data[0].VEHICULOS}}</td>
-                <td>{{data[1].VEHICULOS}}</td>
-                <td>@mdo</td>
+                <td>{{data[0].VEHICULOS|currency:'Bs.'}}</td>
+                <td>{{data[1].VEHICULOS|currency:'Bs.'}}</td>
+                <td>{{compare(data[0].VEHICULOS, data[1].VEHICULOS)|currency:'Bs'}}</td>
               </tr>
-
             </tbody>
           </table>
         </div>
       </div>
     </div>
+
   </div>
 </div>
